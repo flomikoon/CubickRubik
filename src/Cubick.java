@@ -9,7 +9,7 @@ public class Cubick {
         for (int i = 0 ; i < mas.length ; i++){
             for (int j= 0 ; j < 3 ; j++) {
                 for ( int k = 0 ; k < 3 ; k++) {
-                    cubick[i][j][k] = mas[i] ;//+ j + k;
+                    cubick[i][j][k] = mas[i];
                 }
             }
         }
@@ -44,15 +44,15 @@ public class Cubick {
         String cubcop1 = cubick[line][0][0];
         String cubcop2 = cubick[line][0][1];
         String cubcop3 = cubick[line][0][2];
-        cubick[line][0][0] = cubick[line][0][2];
-        cubick[line][0][1] = cubick[line][1][2];
-        cubick[line][0][2] = cubick[line][2][2];
-        cubick[line][1][2] = cubick[line][2][1];
-        cubick[line][2][2] = cubick[line][2][0];
-        cubick[line][2][1] = cubick[line][1][0];
-        cubick[line][0][0] = cubcop3;
-        cubick[line][1][0] = cubcop2;
-        cubick[line][2][0] = cubcop1;
+        cubick[line][0][2] = cubick[line][0][0];
+        cubick[line][0][0] = cubick[line][2][0];
+        cubick[line][0][1] = cubick[line][1][0];
+        cubick[line][1][0] = cubick[line][2][1];
+        cubick[line][2][0] = cubick[line][2][2];
+        cubick[line][2][1] = cubick[line][1][2];
+        cubick[line][2][2] = cubcop3;
+        cubick[line][1][2] = cubcop2;
+        cubick[line][0][2] = cubcop1;
     }
 
     private void runlineXanCh(int line){
@@ -80,15 +80,16 @@ public class Cubick {
         String cubcop1 = cubick[line][0][0];
         String cubcop2 = cubick[line][0][1];
         String cubcop3 = cubick[line][0][2];
-        cubick[line][0][0] = cubick[line][2][0];
-        cubick[line][0][1] = cubick[line][1][0];
-        cubick[line][0][2] = cubick[line][0][0];
-        cubick[line][1][0] = cubick[line][2][1];
-        cubick[line][2][0] = cubick[line][2][2];
-        cubick[line][2][1] = cubick[line][1][2];
-        cubick[line][2][2] = cubcop3;
-        cubick[line][1][2] = cubcop2;
-        cubick[line][0][2] = cubcop1;
+        cubick[line][0][0] = cubick[line][0][2];
+        cubick[line][0][1] = cubick[line][1][2];
+        cubick[line][0][2] = cubick[line][2][2];
+        cubick[line][1][2] = cubick[line][2][1];
+        cubick[line][2][2] = cubick[line][2][0];
+        cubick[line][2][1] = cubick[line][1][0];
+        cubick[line][0][0] = cubcop3;
+        cubick[line][1][0] = cubcop2;
+        cubick[line][2][0] = cubcop1;
+
     }
 
     public void turnX(int line , int napravl){
@@ -102,7 +103,7 @@ public class Cubick {
             }
             if (line == 2) {
                 runlineXanCh(2);
-                runbokXanCh(5);
+                runbokXpoCh(5);
             }
         } else {
             if (line == 1) {
@@ -114,7 +115,7 @@ public class Cubick {
             }
             if (line == 2) {
                 runlineXpoCh(2);
-                runbokXpoCh(5);
+                runbokXanCh(5);
             }
         }
     }
@@ -151,13 +152,12 @@ public class Cubick {
         String cubcop1 = cubick[line][0][0];
         String cubcop2 = cubick[line][0][1];
         String cubcop3 = cubick[line][0][2];
+        cubick[line][0][2] = cubick[line][0][0];
         cubick[line][0][0] = cubick[line][2][0];
         cubick[line][0][1] = cubick[line][1][0];
-        cubick[line][0][2] = cubick[line][0][0];
         cubick[line][1][0] = cubick[line][2][1];
         cubick[line][2][0] = cubick[line][2][2];
         cubick[line][2][1] = cubick[line][1][2];
-        cubick[line][0][2] = cubcop1;
         cubick[line][1][2] = cubcop2;
         cubick[line][2][2] = cubcop3;
     }
@@ -216,7 +216,7 @@ public class Cubick {
             }
             if (line == 2) {
                 runlineZanCh(2);
-                runbokZanCh(2);
+                runbokZpoCh(2);
             }
         } else {
             if (line == 1) {
@@ -228,7 +228,7 @@ public class Cubick {
             }
             if (line == 2) {
                 runlineZpoCh(2);
-                runbokZpoCh(2);
+                runbokZanCh(2);
             }
         }
     }
@@ -265,13 +265,12 @@ public class Cubick {
         String cubcop1 = cubick[line][0][0];
         String cubcop2 = cubick[line][0][1];
         String cubcop3 = cubick[line][0][2];
+        cubick[line][0][2] = cubick[line][0][0];
         cubick[line][0][0] = cubick[line][2][0];
         cubick[line][0][1] = cubick[line][1][0];
-        cubick[line][0][2] = cubick[line][0][0];
         cubick[line][1][0] = cubick[line][2][1];
         cubick[line][2][0] = cubick[line][2][2];
         cubick[line][2][1] = cubick[line][1][2];
-        cubick[line][0][2] = cubcop1;
         cubick[line][1][2] = cubcop2;
         cubick[line][2][2] = cubcop3;
     }
@@ -325,7 +324,7 @@ public class Cubick {
             }
             if (line == 0) {
                 runlineYanCh(0);
-                runbokYanCh(3);
+                runbokYpoCh(3);
             }
             if (line == 2) {
                 runlineYanCh(2);
@@ -337,7 +336,7 @@ public class Cubick {
             }
             if (line == 0) {
                 runlineYpoCh(0);
-                runbokYpoCh(3);
+                runbokYanCh(3);
             }
             if (line == 2) {
                 runlineYpoCh(2);
@@ -346,6 +345,72 @@ public class Cubick {
         }
     }
 
+    public void mix(Cubick cubick) {
+        int count = 500;
+        while (count > 0) {
+            Random random = new Random();
+            int turns = (random.nextInt(3));
+            int turns1 = (random.nextInt(2));
+            cubick.turnZ(turns, turns1);
+           /* cubick.prin();
+            if ((cubick.getCubick(0, 1, 2).equals(cubick.getCubick(5, 0, 1))) ||
+                    (cubick.getCubick(0, 1, 0).equals(cubick.getCubick(4, 0, 1)))||
+                    (cubick.getCubick(0, 0, 1).equals(cubick.getCubick(3, 2, 1)))||
+                    (cubick.getCubick(0, 2, 1).equals(cubick.getCubick(1, 0, 1)))||
+
+                    (cubick.getCubick(5, 1, 2).equals(cubick.getCubick(3, 1, 2))) ||
+                    (cubick.getCubick(5, 2, 1).equals(cubick.getCubick(2, 1, 2)))||
+                    (cubick.getCubick(5, 1, 0).equals(cubick.getCubick(1, 1, 2)))||
+                    (cubick.getCubick(4, 1, 2).equals(cubick.getCubick(1, 1, 0)))||
+
+                    (cubick.getCubick(4, 1, 0).equals(cubick.getCubick(3, 1, 0))) ||
+                    (cubick.getCubick(4, 2, 1).equals(cubick.getCubick(2, 1, 0)))||
+                    (cubick.getCubick(1, 2, 1).equals(cubick.getCubick(2, 0, 1)))||
+                    (cubick.getCubick(2, 2, 1).equals(cubick.getCubick(3, 0, 1)))) {
+                System.out.print("Error");
+                break;
+            }*/
+            cubick.turnY(turns, turns1);
+            /*cubick.prin();
+            if ((cubick.getCubick(0, 1, 2).equals(cubick.getCubick(5, 0, 1))) ||
+                    (cubick.getCubick(0, 1, 0).equals(cubick.getCubick(4, 0, 1)))||
+                    (cubick.getCubick(0, 0, 1).equals(cubick.getCubick(3, 2, 1)))||
+                    (cubick.getCubick(0, 2, 1).equals(cubick.getCubick(1, 0, 1)))||
+
+                    (cubick.getCubick(5, 1, 2).equals(cubick.getCubick(3, 1, 2))) ||
+                    (cubick.getCubick(5, 2, 1).equals(cubick.getCubick(2, 1, 2)))||
+                    (cubick.getCubick(5, 1, 0).equals(cubick.getCubick(1, 1, 2)))||
+                    (cubick.getCubick(4, 1, 2).equals(cubick.getCubick(1, 1, 0)))||
+
+                    (cubick.getCubick(4, 1, 0).equals(cubick.getCubick(3, 1, 0))) ||
+                    (cubick.getCubick(4, 2, 1).equals(cubick.getCubick(2, 1, 0)))||
+                    (cubick.getCubick(1, 2, 1).equals(cubick.getCubick(2, 0, 1)))||
+                    (cubick.getCubick(2, 2, 1).equals(cubick.getCubick(3, 0, 1)))) {
+                System.out.print("Error");
+                break;
+            }*/
+            cubick.turnX(turns, turns1);
+           /* cubick.prin();
+            if ((cubick.getCubick(0, 1, 2).equals(cubick.getCubick(5, 0, 1))) ||
+                    (cubick.getCubick(0, 1, 0).equals(cubick.getCubick(4, 0, 1)))||
+                    (cubick.getCubick(0, 0, 1).equals(cubick.getCubick(3, 2, 1)))||
+                    (cubick.getCubick(0, 2, 1).equals(cubick.getCubick(1, 0, 1)))||
+
+                    (cubick.getCubick(5, 1, 2).equals(cubick.getCubick(3, 1, 2))) ||
+                    (cubick.getCubick(5, 2, 1).equals(cubick.getCubick(2, 1, 2)))||
+                    (cubick.getCubick(5, 1, 0).equals(cubick.getCubick(1, 1, 2)))||
+                    (cubick.getCubick(4, 1, 2).equals(cubick.getCubick(1, 1, 0)))||
+
+                    (cubick.getCubick(4, 1, 0).equals(cubick.getCubick(3, 1, 0))) ||
+                    (cubick.getCubick(4, 2, 1).equals(cubick.getCubick(2, 1, 0)))||
+                    (cubick.getCubick(1, 2, 1).equals(cubick.getCubick(2, 0, 1)))||
+                    (cubick.getCubick(2, 2, 1).equals(cubick.getCubick(3, 0, 1)))) {
+                System.out.print("Error");
+                break;
+            }*/
+            count--;
+        }
+    }
 
     public void prin(){
         for (int j= 0 ; j < 3 ; j++) {
@@ -381,6 +446,7 @@ public class Cubick {
             }
             System.out.print("\n");
         }
+        System.out.print("\n");
     }
 
 }
