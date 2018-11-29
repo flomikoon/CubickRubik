@@ -4,12 +4,12 @@ public class BotMain {
         b.mix(b);
         System.out.print("Stage: 0 \n");
         b.prin();
-        b = Bot.UpWhiteCenter(b);
-        b = Bot.Cross(b);
+        b = Bot.UpYellowCenter(b); //Поднимаем на верх желтую сторону
+        b = Bot.Cross(b);//Собираем белый крест вокруг желтого центра
         System.out.print("Stage: 1 \n");
         b.prin();
-
-        System.out.print("Stage: 2 \n");
+        b = Bot.CrossFull(b);//Перемещаем белый крест на нижню грань , при этом на боковых гранях элементы (* , 0 , 1) и (* , 1 , 1) должны совпадать
+        System.out.print("Stage: 1.2 \n");
         b.prin();
         System.out.print("\n");
     }

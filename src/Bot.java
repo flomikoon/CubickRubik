@@ -1,29 +1,29 @@
 public class Bot {
     //Stage 1
-    public static Cubick UpWhiteCenter(Cubick cubick) {
-        if (cubick.getCubick(0, 1, 1).equals("w")) {
+    public static Cubick UpYellowCenter(Cubick cubick) {
+        if (cubick.getCubick(0, 1, 1).equals("y")) {
             return cubick;
         }
-        if (cubick.getCubick(1, 1, 1).equals("w")) {
-            cubick.turnX(1, 1);
-            return cubick;
-        }
-        if (cubick.getCubick(2, 1, 1).equals("w")) {
-            cubick.turnX(1, 1);
+        if (cubick.getCubick(1, 1, 1).equals("y")) {
             cubick.turnX(1, 1);
             return cubick;
         }
-        if (cubick.getCubick(3, 1, 1).equals("w")) {
-            cubick.turnX(1, 1);
+        if (cubick.getCubick(2, 1, 1).equals("y")) {
             cubick.turnX(1, 1);
             cubick.turnX(1, 1);
             return cubick;
         }
-        if (cubick.getCubick(4, 1, 1).equals("w")) {
+        if (cubick.getCubick(3, 1, 1).equals("y")) {
+            cubick.turnX(1, 1);
+            cubick.turnX(1, 1);
+            cubick.turnX(1, 1);
+            return cubick;
+        }
+        if (cubick.getCubick(4, 1, 1).equals("y")) {
             cubick.turnY(1, 0);
             return cubick;
         }
-        if (cubick.getCubick(5, 1, 1).equals("w")) {
+        if (cubick.getCubick(5, 1, 1).equals("y")) {
             cubick.turnY(1, 1);
             return cubick;
         }
@@ -113,9 +113,30 @@ public class Bot {
         return cubick;
     }
 
-    //Stage 2
+    //Stage 1.2
     public static Cubick CrossFull(Cubick cubick) {
-
+        while (!cubick.getCubick(1, 1, 1).equals(cubick.getCubick(1, 0, 1))) {
+            cubick.turnZ(1, 1);
+        }
+        cubick.turnY(2, 1);
+        cubick.turnY(2, 1);
+        while (!cubick.getCubick(4, 1, 1).equals(cubick.getCubick(4, 0, 1)) ||
+                !cubick.getCubick(0, 1, 0).equals("w")) {
+            cubick.turnZ(0, 1);
+        }
+        cubick.turnX(0, 1);
+        cubick.turnX(0, 1);
+        while (!cubick.getCubick(5, 1, 1).equals(cubick.getCubick(5, 0, 1)) ||
+                !cubick.getCubick(0, 1, 2).equals("w")) {
+            cubick.turnZ(0, 1);
+        }
+        cubick.turnX(2, 1);
+        cubick.turnX(2, 1);
+        while (!cubick.getCubick(0, 0, 1).equals("w")) {
+            cubick.turnZ(0, 1);
+        }
+        cubick.turnY(0, 1);
+        cubick.turnY(0, 1);
         return cubick;
     }
 }
