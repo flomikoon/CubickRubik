@@ -448,5 +448,4 @@ public class Cubick {
         }
         System.out.print("\n");
     }
-
 }

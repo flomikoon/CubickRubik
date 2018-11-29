@@ -1,6 +1,5 @@
-import java.util.Random;
-
 public class Bot {
+    //Stage 1
     public static Cubick UpWhiteCenter(Cubick cubick) {
         if (cubick.getCubick(0, 1, 1).equals("w")) {
             return cubick;
@@ -31,16 +30,9 @@ public class Bot {
         return cubick;
     }
 
-
-    private static Cubick CubPolCre(Cubick cubick, int pos) {
-        int count = 0;
-        while (cubick.getCubick(0, 1, pos).equals("w")) {
-            count++;
-            cubick.turnZ(0, 1);
-            if (count == 4) {
-                break;
-            }
-        }
+    private static Cubick CubPolCross(Cubick cubick, int pos) {
+        int count;
+        cubick = turn(cubick, 1, pos);
         count = 0;
         if (cubick.getCubick(1, 1, pos).equals("w") || cubick.getCubick(4, 1, pos).equals("w")
                 || cubick.getCubick(5, 1, pos).equals("w") || cubick.getCubick(2, 1, pos).equals("w")
@@ -57,53 +49,40 @@ public class Bot {
         return cubick;
     }
 
-    private static Cubick CubPolCrest(Cubick cubick) {
+    private static Cubick turn(Cubick cubick, int first, int second) {
         int count = 0;
+        while (cubick.getCubick(0, first, second).equals("w")) {
+            count++;
+            cubick.turnZ(0, 1);
+            if (count == 4) {
+                break;
+            }
+        }
+        return cubick;
+    }
+
+    private static Cubick CubPolCross(Cubick cubick) {
         if (cubick.getCubick(2, 0, 1).equals("w") || cubick.getCubick(2, 2, 1).equals("w")) {
             cubick.turnZ(2, 1);
             return cubick;
         }
         if (cubick.getCubick(5, 0, 1).equals("w") || cubick.getCubick(5, 2, 1).equals("w")) {
-            while (cubick.getCubick(0, 1, 2).equals("w")) {
-                count++;
-                cubick.turnZ(0, 1);
-                if (count == 4) {
-                    break;
-                }
-            }
+            cubick = turn(cubick, 1, 2);
             cubick.turnX(2, 1);
             return cubick;
         }
         if (cubick.getCubick(4, 0, 1).equals("w") || cubick.getCubick(4, 2, 1).equals("w")) {
-            while (cubick.getCubick(0, 1, 0).equals("w")) {
-                count++;
-                cubick.turnZ(0, 1);
-                if (count == 4) {
-                    break;
-                }
-            }
+            cubick = turn(cubick, 1, 0);
             cubick.turnX(0, 1);
             return cubick;
         }
         if (cubick.getCubick(1, 0, 1).equals("w") || cubick.getCubick(1, 2, 1).equals("w")) {
-            while (cubick.getCubick(0, 2, 1).equals("w")) {
-                count++;
-                cubick.turnZ(0, 1);
-                if (count == 4) {
-                    break;
-                }
-            }
+            cubick = turn(cubick, 2, 1);
             cubick.turnY(2, 1);
             return cubick;
         }
         if (cubick.getCubick(3, 0, 1).equals("w") || cubick.getCubick(3, 2, 1).equals("w")) {
-            while (cubick.getCubick(0, 0, 1).equals("w")) {
-                count++;
-                cubick.turnZ(0, 1);
-                if (count == 4) {
-                    break;
-                }
-            }
+            cubick = turn(cubick, 0, 1);
             cubick.turnY(0, 1);
             return cubick;
         }
@@ -115,33 +94,28 @@ public class Bot {
                 && !cubick.getCubick(5, pos1, pos).equals("w") && !cubick.getCubick(2, pos1, pos).equals("w")
                 && !cubick.getCubick(3, pos1, pos).equals("w");
     }
-   /* private static boolean prov2(Cubick cubick , int pos){
-        return !cubick.getCubick(1, pos, 1).equals("w") && !cubick.getCubick(4, pos, 1).equals("w")
-                && !cubick.getCubick(5, pos, 1).equals("w") && !cubick.getCubick(2, pos, 1).equals("w")
-                && !cubick.getCubick(3, pos, 1).equals("w");
-    }*/
 
-    public static Cubick Crest(Cubick cubick) {
-        int count;
-        while (!(Bot.prov(cubick, 1, 0) && Bot.prov(cubick, 1, 2)) || !(Bot.prov(cubick, 0, 1) && Bot.prov(cubick, 2, 1))) {
+    public static Cubick Cross(Cubick cubick) {
+        while (!(Bot.prov(cubick, 1, 0) && Bot.prov(cubick, 1, 2)) ||
+                !(Bot.prov(cubick, 0, 1) && Bot.prov(cubick, 2, 1))) {
             while (!(Bot.prov(cubick, 1, 0) && Bot.prov(cubick, 1, 2))) {
-                count = 0;
-                while (count != 5) {
-                    cubick = Bot.CubPolCre(cubick, 0);
-                    count++;
+                for (int i = 0; i < 4; i++) {
+                    cubick = Bot.CubPolCross(cubick, 0);
                 }
-                count = 0;
-                while (count != 5) {
-                    cubick = Bot.CubPolCre(cubick, 2);
-                    count++;
+                for (int i = 0; i < 4; i++) {
+                    cubick = Bot.CubPolCross(cubick, 2);
                 }
             }
             if (!(Bot.prov(cubick, 0, 1) && Bot.prov(cubick, 2, 1))) {
-                cubick = Bot.CubPolCrest(cubick);
+                cubick = Bot.CubPolCross(cubick);
             }
-            cubick.prin();
         }
         return cubick;
     }
-}
 
+    //Stage 2
+    public static Cubick CrossFull(Cubick cubick) {
+
+        return cubick;
+    }
+}
