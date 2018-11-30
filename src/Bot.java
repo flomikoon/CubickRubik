@@ -139,4 +139,50 @@ public class Bot {
         cubick.turnY(0, 1);
         return cubick;
     }
+
+    public static Cubick OneSlou(Cubick cubick) {
+        int vix = 0;
+        while (!cubick.getCubick(2, 0, 0).equals("w") || !cubick.getCubick(2, 0, 2).equals("w") ||
+                !cubick.getCubick(2, 2, 0).equals("w") || !cubick.getCubick(2, 2, 2).equals("w")) {
+            int count = 0;
+            while (!cubick.getCubick(0, 2, 2).equals("w") && !cubick.getCubick(5, 0, 0).equals("w")
+                    && !cubick.getCubick(1, 0, 2).equals("w")) {
+                count++;
+                if (count == 6) {
+                    cubick.turnX(2, 1);
+                    cubick.turnZ(0, 0);
+                    cubick.turnX(2, 0);
+                    cubick.turnZ(0, 1);
+                    break;
+                }
+                cubick.turnZ(0, 0);
+            }
+            for (int i = 0; i < 5; i++) {
+                if ((cubick.getCubick(0, 2, 2).equals(cubick.getCubick(1, 1, 1)) ||
+                        cubick.getCubick(1, 0, 2).equals(cubick.getCubick(1, 1, 1)) ||
+                        cubick.getCubick(5, 0, 0).equals(cubick.getCubick(1, 1, 1))) &&
+                        (cubick.getCubick(0, 2, 2).equals(cubick.getCubick(5, 1, 1)) ||
+                                cubick.getCubick(1, 0, 2).equals(cubick.getCubick(5, 1, 1)) ||
+                                cubick.getCubick(5, 0, 0).equals(cubick.getCubick(5, 1, 1)))) {
+                    break;
+                }
+                cubick.turnZ(1, 1);
+                cubick.turnZ(2, 1);
+            }
+            while (!cubick.getCubick(2, 0, 2).equals("w") || !cubick.getCubick(1, 2, 2).equals(cubick.getCubick(1, 1, 1)) ||
+                    !cubick.getCubick(5, 2, 0).equals(cubick.getCubick(5, 1, 1))) {
+                cubick.turnX(2, 1);
+                cubick.turnZ(0, 0);
+                cubick.turnX(2, 0);
+                cubick.turnZ(0, 1);
+            }
+            vix++;
+            if (vix == 40) {
+                cubick.turnZ(1, 1);
+                cubick.turnZ(2, 1);
+                vix = 0;
+            }
+        }
+        return cubick;
+    }
 }
