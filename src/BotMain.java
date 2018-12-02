@@ -4,7 +4,7 @@ public class BotMain {
         b.mix(b);
         System.out.print("Stage: 0 \n");
         b.prin();
-        b = Bot.UpYellowCenter(b); //Поднимаем на верх желтую сторону
+        b = Bot.UpYellowCenter(b); //Поднимаем на верх желтый центр
         b = Bot.Cross(b);//Собираем белый крест вокруг желтого центра
         System.out.print("Stage: 1 \n");
         b.prin();
@@ -13,6 +13,9 @@ public class BotMain {
         b.prin();
         System.out.print("Stage: 2 \n");//Собираем полностью белую грань с низу ,путем постановки белых углов на правильные места,что бы цвет сосед сторон совпадал с центрами
         b = Bot.OneSlou(b);
+        b.prin();
+        System.out.print("Stage: 2.1 \n");//Собираем первые два слоя
+        b = Bot.SecondSide(b);
         b.prin();
         System.out.print("\n");
     }
