@@ -17,8 +17,11 @@ public class BotMain {
         System.out.print("Stage: 2.1 \n");//Собираем первые два слоя
         b = Bot.SecondSide(b);
         b.prin();
-        System.out.print("Stage: 3 \n");
+        System.out.print("Stage: 3 \n");//Собираем желтый крест на верху
         b = Bot.YellowCross(b);
+        b.prin();
+        System.out.print("Stage: 3.1 \n");//Ставим верхнии углы на свои места
+        b = Bot.YellowUgl(b);
         b.prin();
         System.out.print("\n");
     }
