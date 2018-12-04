@@ -261,4 +261,56 @@ public class Bot {
         }
         return cubick;
     }
+
+    public static Cubick YellowCross(Cubick cubick) {
+        while (!cubick.getCubick(0, 0, 1).equals("y") || !cubick.getCubick(0, 1, 0).equals("y")
+                || !cubick.getCubick(0, 1, 2).equals("y") || !cubick.getCubick(0, 2, 1).equals("y")) {
+            for (int i = 0; i < 2; i++) {
+                if (cubick.getCubick(0, 1, 0).equals("y") && cubick.getCubick(0, 1, 1).equals("y")
+                        && cubick.getCubick(0, 1, 2).equals("y")) {
+                    cubick.turnY(2, 0);
+                    cubick.turnX(2, 1);
+                    cubick.turnZ(0, 0);
+                    cubick.turnX(2, 0);
+                    cubick.turnZ(0, 1);
+                    cubick.turnY(2, 1);
+                    break;
+                }
+                cubick.turnZ(0, 1);
+            }
+            for (int i = 0; i < 5; i++) {
+                if (cubick.getCubick(0, 1, 0).equals("y") && cubick.getCubick(0, 0, 1).equals("y")
+                        && cubick.getCubick(0, 1, 1).equals("y") && !cubick.getCubick(0, 2, 1).equals("y")
+                        && !cubick.getCubick(0, 1, 2).equals("y")) {
+                    cubick.turnY(2, 0);
+                    cubick.turnX(2, 1);
+                    cubick.turnZ(0, 0);
+                    cubick.turnX(2, 0);
+                    cubick.turnZ(0, 1);
+                    cubick.turnX(2, 1);
+                    cubick.turnZ(0, 0);
+                    cubick.turnX(2, 0);
+                    cubick.turnZ(0, 1);
+                    cubick.turnY(2, 1);
+                    break;
+                }
+                cubick.turnZ(0, 1);
+            }
+            if (!cubick.getCubick(0, 1, 0).equals("y") && !cubick.getCubick(0, 1, 2).equals("y")
+                    && !cubick.getCubick(0, 0, 1).equals("y") && !cubick.getCubick(0, 2, 1).equals("y")) {
+                cubick.turnY(2, 0);
+                cubick.turnX(2, 1);
+                cubick.turnZ(0, 0);
+                cubick.turnX(2, 0);
+                cubick.turnZ(0, 1);
+                cubick.turnX(2, 1);
+                cubick.turnZ(0, 0);
+                cubick.turnX(2, 0);
+                cubick.turnZ(0, 1);
+                cubick.turnY(2, 1);
+            }
+            cubick.prin();
+        }
+        return cubick;
+    }
 }

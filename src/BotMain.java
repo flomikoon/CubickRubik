@@ -17,6 +17,9 @@ public class BotMain {
         System.out.print("Stage: 2.1 \n");//Собираем первые два слоя
         b = Bot.SecondSide(b);
         b.prin();
+        System.out.print("Stage: 3 \n");
+        b = Bot.YellowCross(b);
+        b.prin();
         System.out.print("\n");
     }
 }
