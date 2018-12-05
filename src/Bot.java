@@ -464,4 +464,36 @@ public class Bot {
         cubick = Full(cubick);
         return cubick;
     }
+
+    public static Cubick YellowSide(Cubick cubick) {
+        cubick.turnX(0, 0);
+        cubick.turnX(1, 0);
+        cubick.turnX(2, 0);
+        cubick.turnX(0, 0);
+        cubick.turnX(1, 0);
+        cubick.turnX(2, 0);
+        while (!cubick.getCubick(2, 0, 2).equals("y") || !cubick.getCubick(2, 0, 0).equals("y")
+                || !cubick.getCubick(2, 2, 2).equals("y") || !cubick.getCubick(2, 2, 0).equals("y")) {
+            while (!cubick.getCubick(1, 2, 2).equals("y") && !cubick.getCubick(5, 2, 0).equals("y")) {
+                cubick.turnZ(2, 0);
+            }
+            while (!cubick.getCubick(2, 0, 2).equals("y")) {
+                cubick.turnX(2, 1);
+                cubick.turnZ(0, 0);
+                cubick.turnX(2, 0);
+                cubick.turnZ(0, 1);
+            }
+            cubick.turnZ(2, 0);
+        }
+        while (!cubick.getCubick(1, 2, 2).equals(cubick.getCubick(1, 1, 1))) {
+            cubick.turnZ(2, 0);
+        }
+        cubick.turnX(0, 0);
+        cubick.turnX(1, 0);
+        cubick.turnX(2, 0);
+        cubick.turnX(0, 0);
+        cubick.turnX(1, 0);
+        cubick.turnX(2, 0);
+        return cubick;
+    }
 }

@@ -14,7 +14,7 @@ public class BotMain {
         System.out.print("Stage: 2 \n");//Собираем полностью белую грань с низу ,путем постановки белых углов на правильные места,что бы цвет сосед сторон совпадал с центрами
         b = Bot.OneSlou(b);
         b.prin();
-        System.out.print("Stage: 2.1 \n");//Собираем первые два слоя
+        System.out.print("Stage: 2.1 \n");//Собираем первые два слоя,полностью собраны белая сторона и два слоя
         b = Bot.SecondSide(b);
         b.prin();
         System.out.print("Stage: 3 \n");//Собираем желтый крест на верху
@@ -22,6 +22,9 @@ public class BotMain {
         b.prin();
         System.out.print("Stage: 3.1 \n");//Ставим верхнии углы на свои места
         b = Bot.YellowUgl(b);
+        b.prin();
+        System.out.print("Stage: 3.2 \n");//Переворачиваем желтые углы в парвильное положение,на этой стадии собрано все кроме серидин 3 стороны
+        b = Bot.YellowSide(b);
         b.prin();
         System.out.print("\n");
     }
