@@ -26,6 +26,9 @@ public class BotMain {
         System.out.print("Stage: 3.2 \n");//Переворачиваем желтые углы в парвильное положение,на этой стадии собрано все кроме серидин 3 стороны
         b = Bot.YellowSide(b);
         b.prin();
+        System.out.print("Stage: 3.3 \n");//Кубик полностью собран
+        b = Bot.FullCubick(b);
+        b.prin();
         System.out.print("\n");
     }
 }
