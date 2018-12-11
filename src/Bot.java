@@ -1,6 +1,6 @@
 public class Bot {
     //Stage 1
-    public static Cubick UpYellowCenter(Cubick cubick) {
+    public static Cubick upYellowCenter(Cubick cubick) {
         if (cubick.getCubick(0, 1, 1).equals("y")) {
             return cubick;
         }
@@ -30,7 +30,7 @@ public class Bot {
         return cubick;
     }
 
-    private static Cubick RightAlgor(Cubick cubick) {
+    private static Cubick rightAlgorithm(Cubick cubick) {
         cubick.turnX(2, 1);
         cubick.turnZ(0, 0);
         cubick.turnX(2, 0);
@@ -38,7 +38,7 @@ public class Bot {
         return cubick;
     }
 
-    private static Cubick LeftAlgor(Cubick cubick) {
+    private static Cubick leftAlgorithm(Cubick cubick) {
         cubick.turnX(0, 1);
         cubick.turnZ(0, 1);
         cubick.turnX(0, 0);
@@ -46,7 +46,7 @@ public class Bot {
         return cubick;
     }
 
-    private static Cubick CubPolCross(Cubick cubick, int pos) {
+    private static Cubick cubeMoietyCross(Cubick cubick, int pos) {
         int count;
         cubick = turn(cubick, 1, pos);
         count = 0;
@@ -77,7 +77,7 @@ public class Bot {
         return cubick;
     }
 
-    private static Cubick CubPolCross(Cubick cubick) {
+    private static Cubick cubeMoietyCross(Cubick cubick) {
         if (cubick.getCubick(2, 0, 1).equals("w") || cubick.getCubick(2, 2, 1).equals("w")) {
             cubick.turnZ(2, 1);
             return cubick;
@@ -105,32 +105,32 @@ public class Bot {
         return cubick;
     }
 
-    private static boolean prov(Cubick cubick, int pos1, int pos) {
+    private static boolean checkOne(Cubick cubick, int pos1, int pos) {
         return !cubick.getCubick(1, pos1, pos).equals("w") && !cubick.getCubick(4, pos1, pos).equals("w")
                 && !cubick.getCubick(5, pos1, pos).equals("w") && !cubick.getCubick(2, pos1, pos).equals("w")
                 && !cubick.getCubick(3, pos1, pos).equals("w");
     }
 
-    public static Cubick Cross(Cubick cubick) {
-        while (!(Bot.prov(cubick, 1, 0) && Bot.prov(cubick, 1, 2)) ||
-                !(Bot.prov(cubick, 0, 1) && Bot.prov(cubick, 2, 1))) {
-            while (!(Bot.prov(cubick, 1, 0) && Bot.prov(cubick, 1, 2))) {
+    public static Cubick whiteCrossWithYellowCenter(Cubick cubick) {
+        while (!(Bot.checkOne(cubick, 1, 0) && Bot.checkOne(cubick, 1, 2)) ||
+                !(Bot.checkOne(cubick, 0, 1) && Bot.checkOne(cubick, 2, 1))) {
+            while (!(Bot.checkOne(cubick, 1, 0) && Bot.checkOne(cubick, 1, 2))) {
                 for (int i = 0; i < 4; i++) {
-                    cubick = Bot.CubPolCross(cubick, 0);
+                    cubick = Bot.cubeMoietyCross(cubick, 0);
                 }
                 for (int i = 0; i < 4; i++) {
-                    cubick = Bot.CubPolCross(cubick, 2);
+                    cubick = Bot.cubeMoietyCross(cubick, 2);
                 }
             }
-            if (!(Bot.prov(cubick, 0, 1) && Bot.prov(cubick, 2, 1))) {
-                cubick = Bot.CubPolCross(cubick);
+            if (!(Bot.checkOne(cubick, 0, 1) && Bot.checkOne(cubick, 2, 1))) {
+                cubick = Bot.cubeMoietyCross(cubick);
             }
         }
         return cubick;
     }
 
     //Stage 1.2
-    public static Cubick CrossFull(Cubick cubick) {
+    public static Cubick whiteCrossFull(Cubick cubick) {
         while (!cubick.getCubick(1, 1, 1).equals(cubick.getCubick(1, 0, 1))) {
             cubick.turnZ(1, 1);
         }
@@ -156,7 +156,7 @@ public class Bot {
         return cubick;
     }
 
-    public static Cubick OneSlou(Cubick cubick) {
+    public static Cubick firstLayer(Cubick cubick) {
         int vix = 0;
         while (!cubick.getCubick(2, 0, 0).equals("w") || !cubick.getCubick(2, 0, 2).equals("w") ||
                 !cubick.getCubick(2, 2, 0).equals("w") || !cubick.getCubick(2, 2, 2).equals("w")) {
@@ -165,7 +165,7 @@ public class Bot {
                     && !cubick.getCubick(1, 0, 2).equals("w")) {
                 count++;
                 if (count == 6) {
-                    cubick = RightAlgor(cubick);
+                    cubick = rightAlgorithm(cubick);
                     break;
                 }
                 cubick.turnZ(0, 0);
@@ -184,7 +184,7 @@ public class Bot {
             }
             while (!cubick.getCubick(2, 0, 2).equals("w") || !cubick.getCubick(1, 2, 2).equals(cubick.getCubick(1, 1, 1)) ||
                     !cubick.getCubick(5, 2, 0).equals(cubick.getCubick(5, 1, 1))) {
-                cubick = RightAlgor(cubick);
+                cubick = rightAlgorithm(cubick);
             }
             vix++;
             if (vix == 40) {
@@ -196,49 +196,33 @@ public class Bot {
         return cubick;
     }
 
-   /* private static Cubick RightAlgor(Cubick cubick) {
-        cubick.turnX(2, 1);
-        cubick.turnZ(0, 0);
-        cubick.turnX(2, 0);
-        cubick.turnZ(0, 1);
-        return cubick;
-    }
-
-    private static Cubick LeftAlgor(Cubick cubick) {
-        cubick.turnX(0, 1);
-        cubick.turnZ(0, 1);
-        cubick.turnX(0, 0);
-        cubick.turnZ(0, 0);
-        return cubick;
-    }*/
-
-    private static Cubick RightAlg(Cubick cubick) {
+    private static Cubick rightleftAlgorithm(Cubick cubick) {
         cubick.turnZ(0, 0);
 
-        cubick = RightAlgor(cubick);
+        cubick = rightAlgorithm(cubick);
 
         cubick.turnZ(0, 0);
         cubick.turnZ(1, 0);
         cubick.turnZ(2, 0);
 
-        cubick = LeftAlgor(cubick);
+        cubick = leftAlgorithm(cubick);
         return cubick;
     }
 
-    private static Cubick LeftAlg(Cubick cubick) {
+    private static Cubick leftrightAlgorithm(Cubick cubick) {
         cubick.turnZ(0, 1);
 
-        cubick = LeftAlgor(cubick);
+        cubick = leftAlgorithm(cubick);
 
         cubick.turnZ(0, 1);
         cubick.turnZ(1, 1);
         cubick.turnZ(2, 1);
 
-        cubick = RightAlgor(cubick);
+        cubick = rightAlgorithm(cubick);
         return cubick;
     }
 
-    private static boolean prov2(Cubick cubick) {
+    private static boolean checkTwo(Cubick cubick) {
         return !cubick.getCubick(1, 1, 1).equals(cubick.getCubick(1, 1, 2)) ||
                 !cubick.getCubick(1, 1, 1).equals(cubick.getCubick(1, 1, 0)) ||
                 !cubick.getCubick(5, 1, 1).equals(cubick.getCubick(5, 1, 2)) ||
@@ -249,15 +233,15 @@ public class Bot {
                 !cubick.getCubick(3, 1, 1).equals(cubick.getCubick(3, 1, 0));
     }
 
-    public static Cubick SecondSide(Cubick cubick) {
-        while (prov2(cubick)) {
+    public static Cubick secondLayer(Cubick cubick) {
+        while (checkTwo(cubick)) {
             for (int i = 0; i < 10; i++) {
                 if (cubick.getCubick(1, 0, 1).equals(cubick.getCubick(1, 1, 1)) &&
                         !cubick.getCubick(0, 2, 1).equals("y")) {
                     if (cubick.getCubick(0, 2, 1).equals(cubick.getCubick(5, 1, 1))) {
-                        cubick = RightAlg(cubick);
+                        cubick = rightleftAlgorithm(cubick);
                     } else {
-                        cubick = LeftAlg(cubick);
+                        cubick = leftrightAlgorithm(cubick);
                     }
                 }
                 for (int j = 0; j < 5; j++) {
@@ -270,19 +254,19 @@ public class Bot {
                 cubick.turnZ(1, 1);
                 cubick.turnZ(2, 1);
             }
-            if (prov2(cubick)) {
+            if (checkTwo(cubick)) {
                 while (cubick.getCubick(1, 1, 2).equals(cubick.getCubick(1, 1, 1)) &&
                         cubick.getCubick(5, 1, 0).equals(cubick.getCubick(5, 1, 1))) {
                     cubick.turnZ(1, 1);
                     cubick.turnZ(2, 1);
                 }
-                cubick = RightAlg(cubick);
+                cubick = rightleftAlgorithm(cubick);
             }
         }
         return cubick;
     }
 
-    private static Cubick CrossOne(Cubick cubick) {
+    private static Cubick yellowCrossHelps(Cubick cubick) {
         cubick.turnY(2, 0);
         cubick.turnX(2, 1);
         cubick.turnZ(0, 0);
@@ -292,81 +276,63 @@ public class Bot {
         return cubick;
     }
 
-    public static Cubick YellowCross(Cubick cubick) {
+    public static Cubick yellowCross(Cubick cubick) {
         while (!cubick.getCubick(0, 0, 1).equals("y") || !cubick.getCubick(0, 1, 0).equals("y")
                 || !cubick.getCubick(0, 1, 2).equals("y") || !cubick.getCubick(0, 2, 1).equals("y")) {
             for (int i = 0; i < 4; i++) {
                 if (cubick.getCubick(0, 1, 0).equals("y") && cubick.getCubick(0, 1, 1).equals("y")
                         && cubick.getCubick(0, 1, 2).equals("y")) {
-                    cubick = CrossOne(cubick);
+                    cubick = yellowCrossHelps(cubick);
                     break;
                 }
                 if (cubick.getCubick(0, 1, 0).equals("y") && cubick.getCubick(0, 0, 1).equals("y")
                         && cubick.getCubick(0, 1, 1).equals("y") && !cubick.getCubick(0, 2, 1).equals("y")
                         && !cubick.getCubick(0, 1, 2).equals("y")) {
-                    cubick = CrossOne(cubick);
-                    cubick = CrossOne(cubick);
+                    cubick = yellowCrossHelps(cubick);
+                    cubick = yellowCrossHelps(cubick);
                     break;
                 }
                 cubick.turnZ(0, 1);
             }
             if (!cubick.getCubick(0, 1, 0).equals("y") && !cubick.getCubick(0, 1, 2).equals("y")
                     && !cubick.getCubick(0, 0, 1).equals("y") && !cubick.getCubick(0, 2, 1).equals("y")) {
-                cubick = CrossOne(cubick);
-                cubick = CrossOne(cubick);
+                cubick = yellowCrossHelps(cubick);
+                cubick = yellowCrossHelps(cubick);
             }
 
         }
         return cubick;
     }
 
-    private static Cubick Pov(Cubick cubick) {
-        cubick.turnX(2, 1);
-        cubick.turnZ(0, 0);
-        cubick.turnX(2, 0);
-        cubick.turnZ(0, 1);
+    private static Cubick threeRightThreeleftAlgorithms(Cubick cubick) {
+        cubick = rightAlgorithm(cubick);
 
-        cubick.turnX(2, 1);
-        cubick.turnZ(0, 0);
-        cubick.turnX(2, 0);
-        cubick.turnZ(0, 1);
+        cubick = rightAlgorithm(cubick);
 
-        cubick.turnX(2, 1);
-        cubick.turnZ(0, 0);
-        cubick.turnX(2, 0);
-        cubick.turnZ(0, 1);
+        cubick = rightAlgorithm(cubick);
 
         cubick.turnZ(0, 0);
         cubick.turnZ(1, 0);
         cubick.turnZ(2, 0);
 
-        cubick.turnX(0, 1);
-        cubick.turnZ(0, 1);
-        cubick.turnX(0, 0);
-        cubick.turnZ(0, 0);
+        cubick = leftAlgorithm(cubick);
 
-        cubick.turnX(0, 1);
-        cubick.turnZ(0, 1);
-        cubick.turnX(0, 0);
-        cubick.turnZ(0, 0);
+        cubick = leftAlgorithm(cubick);
 
-        cubick.turnX(0, 1);
-        cubick.turnZ(0, 1);
-        cubick.turnX(0, 0);
-        cubick.turnZ(0, 0);
+        cubick = leftAlgorithm(cubick);
         return cubick;
     }
 
-    private static Cubick Full(Cubick cubick) {
+    private static Cubick checkOnTheGroundAnglesOrNot(Cubick cubick) {
         int c;
         while (true) {
             c = 0;
             for (int i = 0; i < 4; i++) {
                 c = 0;
-                if (Prov4(cubick)) {
+                if (checkAngleZeroFourTree(cubick)) {
                     c++;
                 }
-                if (Prov3(cubick)) {
+                if (checkAngleZeroFourOne(cubick)) {
                     c++;
                 }
                 if (c == 2) {
@@ -383,7 +349,7 @@ public class Bot {
         return cubick;
     }
 
-    private static boolean Prov3(Cubick cubick) {
+    private static boolean checkAngleZeroFourOne(Cubick cubick) {
         return (cubick.getCubick(0, 2, 0).equals(cubick.getCubick(0, 1, 1)) ||
                 cubick.getCubick(0, 2, 0).equals(cubick.getCubick(4, 1, 1)) ||
                 cubick.getCubick(0, 2, 0).equals(cubick.getCubick(1, 1, 1))) &&
@@ -395,7 +361,7 @@ public class Bot {
                         cubick.getCubick(4, 0, 2).equals(cubick.getCubick(1, 1, 1)));
     }
 
-    private static boolean Prov4(Cubick cubick) {
+    private static boolean checkAngleZeroFourTree(Cubick cubick) {
         return (cubick.getCubick(0, 0, 0).equals(cubick.getCubick(0, 1, 1)) ||
                 cubick.getCubick(0, 0, 0).equals(cubick.getCubick(4, 1, 1)) ||
                 cubick.getCubick(0, 0, 0).equals(cubick.getCubick(3, 1, 1))) &&
@@ -407,7 +373,31 @@ public class Bot {
                         cubick.getCubick(3, 2, 0).equals(cubick.getCubick(3, 1, 1)));
     }
 
-    public static Cubick YellowUgl(Cubick cubick) {
+    private static boolean checkAngleZeroFiveTree(Cubick cubick) {
+        return (cubick.getCubick(0, 0, 2).equals(cubick.getCubick(0, 1, 1)) ||
+                cubick.getCubick(0, 0, 2).equals(cubick.getCubick(5, 1, 1)) ||
+                cubick.getCubick(0, 0, 2).equals(cubick.getCubick(3, 1, 1))) &&
+                (cubick.getCubick(5, 0, 2).equals(cubick.getCubick(0, 1, 1)) ||
+                        cubick.getCubick(5, 0, 2).equals(cubick.getCubick(5, 1, 1)) ||
+                        cubick.getCubick(5, 0, 2).equals(cubick.getCubick(3, 1, 1))) &&
+                (cubick.getCubick(3, 2, 2).equals(cubick.getCubick(0, 1, 1)) ||
+                        cubick.getCubick(3, 2, 2).equals(cubick.getCubick(5, 1, 1)) ||
+                        cubick.getCubick(3, 2, 2).equals(cubick.getCubick(3, 1, 1)));
+    }
+
+    private static boolean checkAngleZeroOneFive(Cubick cubick) {
+        return (cubick.getCubick(0, 2, 2).equals(cubick.getCubick(0, 1, 1)) ||
+                cubick.getCubick(0, 2, 2).equals(cubick.getCubick(5, 1, 1)) ||
+                cubick.getCubick(0, 2, 2).equals(cubick.getCubick(1, 1, 1))) &&
+                (cubick.getCubick(1, 0, 2).equals(cubick.getCubick(0, 1, 1)) ||
+                        cubick.getCubick(1, 0, 2).equals(cubick.getCubick(5, 1, 1)) ||
+                        cubick.getCubick(1, 0, 2).equals(cubick.getCubick(1, 1, 1))) &&
+                (cubick.getCubick(5, 0, 0).equals(cubick.getCubick(0, 1, 1)) ||
+                        cubick.getCubick(5, 0, 0).equals(cubick.getCubick(5, 1, 1)) ||
+                        cubick.getCubick(5, 0, 0).equals(cubick.getCubick(1, 1, 1)));
+    }
+
+    public static Cubick yellowCornersIntoPlace(Cubick cubick) {
         int count = 0;
         int count1 = 0;
         int countgl;
@@ -416,34 +406,18 @@ public class Bot {
                 count = 0;
                 count1 = 0;
                 countgl = 0;
-                if ((cubick.getCubick(0, 2, 2).equals(cubick.getCubick(0, 1, 1)) ||
-                        cubick.getCubick(0, 2, 2).equals(cubick.getCubick(5, 1, 1)) ||
-                        cubick.getCubick(0, 2, 2).equals(cubick.getCubick(1, 1, 1))) &&
-                        (cubick.getCubick(1, 0, 2).equals(cubick.getCubick(0, 1, 1)) ||
-                                cubick.getCubick(1, 0, 2).equals(cubick.getCubick(5, 1, 1)) ||
-                                cubick.getCubick(1, 0, 2).equals(cubick.getCubick(1, 1, 1))) &&
-                        (cubick.getCubick(5, 0, 0).equals(cubick.getCubick(0, 1, 1)) ||
-                                cubick.getCubick(5, 0, 0).equals(cubick.getCubick(5, 1, 1)) ||
-                                cubick.getCubick(5, 0, 0).equals(cubick.getCubick(1, 1, 1)))) {
+                if (checkAngleZeroOneFive(cubick)) {
                     countgl++;
                 }
-                if ((cubick.getCubick(0, 0, 2).equals(cubick.getCubick(0, 1, 1)) ||
-                        cubick.getCubick(0, 0, 2).equals(cubick.getCubick(5, 1, 1)) ||
-                        cubick.getCubick(0, 0, 2).equals(cubick.getCubick(3, 1, 1))) &&
-                        (cubick.getCubick(5, 0, 2).equals(cubick.getCubick(0, 1, 1)) ||
-                                cubick.getCubick(5, 0, 2).equals(cubick.getCubick(5, 1, 1)) ||
-                                cubick.getCubick(5, 0, 2).equals(cubick.getCubick(3, 1, 1))) &&
-                        (cubick.getCubick(3, 2, 2).equals(cubick.getCubick(0, 1, 1)) ||
-                                cubick.getCubick(3, 2, 2).equals(cubick.getCubick(5, 1, 1)) ||
-                                cubick.getCubick(3, 2, 2).equals(cubick.getCubick(3, 1, 1)))) {
+                if (checkAngleZeroFiveTree(cubick)) {
                     count1++;
                     countgl++;
                 }
-                if (Prov4(cubick)) {
+                if (checkAngleZeroFourTree(cubick)) {
                     count++;
                     countgl++;
                 }
-                if (Prov3(cubick)) {
+                if (checkAngleZeroFourOne(cubick)) {
                     count++;
                     count1++;
                     countgl++;
@@ -463,21 +437,21 @@ public class Bot {
             cubick.turnZ(2, 1);
         }
         if (count == 2) {
-            cubick = Pov(cubick);
-            cubick = Full(cubick);
+            cubick = threeRightThreeleftAlgorithms(cubick);
+            cubick = checkOnTheGroundAnglesOrNot(cubick);
         }
         if (count1 == 2) {
             cubick.prin();
-            cubick = Pov(cubick);
-            cubick = Full(cubick);
+            cubick = threeRightThreeleftAlgorithms(cubick);
+            cubick = checkOnTheGroundAnglesOrNot(cubick);
             cubick.prin();
-            cubick = Pov(cubick);
+            cubick = threeRightThreeleftAlgorithms(cubick);
         }
-        cubick = Full(cubick);
+        cubick = checkOnTheGroundAnglesOrNot(cubick);
         return cubick;
     }
 
-    private static Cubick TwoTurnX(Cubick cubick) {
+    private static Cubick twoTurnX(Cubick cubick) {
         cubick.turnX(0, 0);
         cubick.turnX(1, 0);
         cubick.turnX(2, 0);
@@ -487,47 +461,47 @@ public class Bot {
         return cubick;
     }
 
-    public static Cubick YellowSide(Cubick cubick) {
-        cubick = TwoTurnX(cubick);
+    public static Cubick yellowSide(Cubick cubick) {
+        cubick = twoTurnX(cubick);
         while (!cubick.getCubick(2, 0, 2).equals("y") || !cubick.getCubick(2, 0, 0).equals("y")
                 || !cubick.getCubick(2, 2, 2).equals("y") || !cubick.getCubick(2, 2, 0).equals("y")) {
             while (!cubick.getCubick(1, 2, 2).equals("y") && !cubick.getCubick(5, 2, 0).equals("y")) {
                 cubick.turnZ(2, 0);
             }
             while (!cubick.getCubick(2, 0, 2).equals("y")) {
-                cubick = RightAlgor(cubick);
+                cubick = rightAlgorithm(cubick);
             }
             cubick.turnZ(2, 0);
         }
         while (!cubick.getCubick(1, 2, 2).equals(cubick.getCubick(1, 1, 1))) {
             cubick.turnZ(2, 0);
         }
-        cubick = TwoTurnX(cubick);
+        cubick = twoTurnX(cubick);
         return cubick;
     }
 
-    private static Cubick FinalAlg(Cubick cubick) {
-        cubick = RightAlgor(cubick);
-        cubick = LeftAlgor(cubick);
-        cubick = RightAlgor(cubick);
-        cubick = RightAlgor(cubick);
-        cubick = RightAlgor(cubick);
-        cubick = RightAlgor(cubick);
-        cubick = RightAlgor(cubick);
-        cubick = LeftAlgor(cubick);
-        cubick = LeftAlgor(cubick);
-        cubick = LeftAlgor(cubick);
-        cubick = LeftAlgor(cubick);
-        cubick = LeftAlgor(cubick);
+    private static Cubick finalAlg(Cubick cubick) {
+        cubick = rightAlgorithm(cubick);
+        cubick = leftAlgorithm(cubick);
+        cubick = rightAlgorithm(cubick);
+        cubick = rightAlgorithm(cubick);
+        cubick = rightAlgorithm(cubick);
+        cubick = rightAlgorithm(cubick);
+        cubick = rightAlgorithm(cubick);
+        cubick = leftAlgorithm(cubick);
+        cubick = leftAlgorithm(cubick);
+        cubick = leftAlgorithm(cubick);
+        cubick = leftAlgorithm(cubick);
+        cubick = leftAlgorithm(cubick);
         return cubick;
     }
 
-    private static Cubick FinalAlgSecond(Cubick cubick) {
+    private static Cubick finalAlgSecond(Cubick cubick) {
         for (int i = 0; i < 4; i++) {
             if (cubick.getCubick(1, 1, 1).equals(cubick.getCubick(1, 0, 1))) {
                 while (!cubick.getCubick(1, 1, 1).equals(cubick.getCubick(1, 0, 1)) ||
                         !cubick.getCubick(4, 1, 1).equals(cubick.getCubick(4, 0, 1))) {
-                    cubick = FinalAlg(cubick);
+                    cubick = finalAlg(cubick);
                 }
                 return cubick;
             }
@@ -538,10 +512,10 @@ public class Bot {
         return cubick;
     }
 
-    public static Cubick FullCubick(Cubick cubick) {
-        cubick = FinalAlgSecond(cubick);
-        cubick = FinalAlg(cubick);
-        cubick = FinalAlgSecond(cubick);
+    public static Cubick fullCubick(Cubick cubick) {
+        cubick = finalAlgSecond(cubick);
+        cubick = finalAlg(cubick);
+        cubick = finalAlgSecond(cubick);
         return cubick;
     }
 }
