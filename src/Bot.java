@@ -441,10 +441,8 @@ public class Bot {
             cubick = checkOnTheGroundAnglesOrNot(cubick);
         }
         if (count1 == 2) {
-            cubick.prin();
             cubick = threeRightThreeleftAlgorithms(cubick);
             cubick = checkOnTheGroundAnglesOrNot(cubick);
-            cubick.prin();
             cubick = threeRightThreeleftAlgorithms(cubick);
         }
         cubick = checkOnTheGroundAnglesOrNot(cubick);

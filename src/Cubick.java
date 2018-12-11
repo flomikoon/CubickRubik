@@ -294,7 +294,7 @@ public class Cubick {
         }
     }
 
-    public void prin() {
+    public String toString() {
         for (int j = 0; j < 3; j++) {
             System.out.print("   ");
             for (int k = 0; k < 3; k++) {
@@ -329,5 +329,6 @@ public class Cubick {
             System.out.print("\n");
         }
         System.out.print("\n");
+        return "";
     }
 }
