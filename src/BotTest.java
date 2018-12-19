@@ -9,6 +9,7 @@ class BotTest {
     private Cubick cubick4 = new Cubick();
     private Cubick cubick5 = new Cubick();
 
+
     private boolean assertWhiteCrossWithYellowCenter(Cubick cubick, String other) {
         return cubick.getCubick(0, 1, 1).equals("y") && cubick.getCubick(0, 0, 1).equals(other) &&
                 cubick.getCubick(0, 1, 0).equals(other) && cubick.getCubick(0, 2, 1).equals(other) &&
@@ -98,6 +99,8 @@ class BotTest {
         assertFalse(assertFullCubick(cubick3));
         assertFalse(assertFullCubick(cubick4));
         assertFalse(assertFullCubick(cubick5));
+
+        //Проверяем собран ли белый крест с желтым верхом
         cubick1 = whiteCrossWithYellowCenter(cubick1);
         cubick2 = whiteCrossWithYellowCenter(cubick2);
         cubick3 = whiteCrossWithYellowCenter(cubick3);
@@ -109,6 +112,8 @@ class BotTest {
         assertTrue(assertWhiteCrossWithYellowCenter(cubick4, "w"));
         assertTrue(assertWhiteCrossWithYellowCenter(cubick5, "w"));
         assertFalse(assertWhiteCrossWithYellowCenter(cubick5, "g"));
+
+        //Проверка собран ли полностью белый крест
         cubick1 = Bot.whiteCrossFull(cubick1);
         cubick2 = Bot.whiteCrossFull(cubick2);
         cubick3 = Bot.whiteCrossFull(cubick3);
@@ -120,6 +125,8 @@ class BotTest {
         assertTrue(assertWhiteCrossFull(cubick4, "w"));
         assertTrue(assertWhiteCrossFull(cubick5, "w"));
         assertFalse(assertWhiteCrossFull(cubick5, "y"));
+
+        //Провера собран ли первый слой
         cubick1 = Bot.firstLayer(cubick1);
         cubick2 = Bot.firstLayer(cubick2);
         cubick3 = Bot.firstLayer(cubick3);
@@ -130,6 +137,8 @@ class BotTest {
         assertTrue(assertFirstLayer(cubick3));
         assertTrue(assertFirstLayer(cubick4));
         assertTrue(assertFirstLayer(cubick5));
+
+        //Проверка собраны ли 2 слоя
         cubick1 = Bot.secondLayer(cubick1);
         cubick2 = Bot.secondLayer(cubick2);
         cubick3 = Bot.secondLayer(cubick4);
@@ -140,6 +149,8 @@ class BotTest {
         assertTrue(assertSecondLayer(cubick3));
         assertTrue(assertSecondLayer(cubick4));
         assertTrue(assertSecondLayer(cubick5));
+
+        //Проверка собран ли желтый крест
         cubick1 = Bot.yellowCross(cubick1);
         cubick2 = Bot.yellowCross(cubick2);
         cubick3 = Bot.yellowCross(cubick3);
@@ -151,6 +162,8 @@ class BotTest {
         assertTrue(assertWhiteCrossWithYellowCenter(cubick4, "y"));
         assertTrue(assertWhiteCrossWithYellowCenter(cubick5, "y"));
         assertFalse(assertWhiteCrossWithYellowCenter(cubick5, "g"));
+
+        //Проверка собраана ли желтая сторона
         cubick1 = Bot.yellowCornersIntoPlace(cubick1);
         cubick1 = Bot.yellowSide(cubick1);
         cubick2 = Bot.yellowCornersIntoPlace(cubick2);
@@ -166,6 +179,8 @@ class BotTest {
         assertTrue(assertYellowSide(cubick3));
         assertTrue(assertYellowSide(cubick4));
         assertTrue(assertYellowSide(cubick5));
+
+        //Проверка собран кубик или нет
         cubick1 = Bot.fullCubick(cubick1);
         cubick2 = Bot.fullCubick(cubick2);
         cubick3 = Bot.fullCubick(cubick3);
