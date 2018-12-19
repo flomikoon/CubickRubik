@@ -294,41 +294,47 @@ public class Cubick {
         }
     }
 
+    @Override
     public String toString() {
+        StringBuilder result = new StringBuilder();
+
         for (int j = 0; j < 3; j++) {
-            System.out.print("   ");
+            result.append("   ");
             for (int k = 0; k < 3; k++) {
-                System.out.print(cubick[0][j][k]);
+                result.append(cubick[0][j][k]);
             }
-            System.out.print("\n");
+            result.append("\n");
+        }
+
+        for (int j = 0; j < 3; j++) {
+            for (int k = 0; k < 3; k++) {
+                result.append(cubick[4][j][k]);
+            }
+            for (int k = 0; k < 3; k++) {
+                result.append(cubick[1][j][k]);
+            }
+            for (int k = 0; k < 3; k++) {
+                result.append(cubick[5][j][k]);
+            }
+            result.append("\n");
+        }
+
+        for (int j = 0; j < 3; j++) {
+            result.append("   ");
+            for (int k = 0; k < 3; k++) {
+                result.append(cubick[2][j][k]);
+            }
+            result.append("\n");
         }
         for (int j = 0; j < 3; j++) {
+            result.append("   ");
             for (int k = 0; k < 3; k++) {
-                System.out.print(cubick[4][j][k]);
+                result.append(cubick[3][j][k]);
             }
-            for (int k = 0; k < 3; k++) {
-                System.out.print(cubick[1][j][k]);
-            }
-            for (int k = 0; k < 3; k++) {
-                System.out.print(cubick[5][j][k]);
-            }
-            System.out.print("\n");
+            result.append("\n");
         }
-        for (int j = 0; j < 3; j++) {
-            System.out.print("   ");
-            for (int k = 0; k < 3; k++) {
-                System.out.print(cubick[2][j][k]);
-            }
-            System.out.print("\n");
-        }
-        for (int j = 0; j < 3; j++) {
-            System.out.print("   ");
-            for (int k = 0; k < 3; k++) {
-                System.out.print(cubick[3][j][k]);
-            }
-            System.out.print("\n");
-        }
-        System.out.print("\n");
-        return "";
+        result.append("\n");
+
+        return String.valueOf(result);
     }
 }
